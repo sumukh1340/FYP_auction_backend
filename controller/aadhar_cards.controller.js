@@ -5,6 +5,7 @@ var {response, handleError, MongooseErrorHandle} = require('../utils/response.ut
 var router = express.Router();
 
 router.post('/', (req, res) => {
+    
     let {aadhar_card_number} = req.body;
 
     if (aadhar_card_number.length !== 12) {
@@ -32,7 +33,11 @@ router.post('/', (req, res) => {
 
 // Get all
 router.get('/', (req, res) => {
-    aadhar_cards.find({})
+    let query = {
+        aadhar_card_number_found : false
+    };
+   
+    aadhar_cards.find(query,{})
         .exec((err, list) => {
             if (err) {
                 return MongooseErrorHandle(err, res);

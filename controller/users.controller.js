@@ -2,6 +2,7 @@ var express = require('express');
 var Users = require('../models/users.model');
 var aadhar_cards = require('../models/aadhar_cards.model');
 var {response, handleError, MongooseErrorHandle} = require('../utils/response.util');
+var {sign, decode} = require('../utils/crypto/jwt.util');
 var {encrypt, compare} = require('../utils/crypto/hash.util');
 var {save_image, upload_image} = require('../utils/upload');
 
@@ -22,6 +23,8 @@ router.post('/', (req, res) => {
 
     aadhar_cards.findOne({
         aadhar_card_number: aadhar_card_number
+    },{
+        aadhar_card_number_found : true
     }).exec((err2, aadhar) => {
         if (err2) {
             return MongooseErrorHandle(err2, res);

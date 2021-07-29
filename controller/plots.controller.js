@@ -6,7 +6,7 @@ var {save_image, upload_image} = require('../utils/upload');
 var router = express.Router();
 
 router.post('/', (req, res) => {
-    let {title, product_id, description, image, document_image, user_id} = req.body;
+    let {title, product_id, description,address, image, document_image, user_id} = req.body;
     let image_url_1 = '';
     let image_url_2 = '';
     let public_key = random_numberic(4);
@@ -28,6 +28,7 @@ router.post('/', (req, res) => {
                                         title: title,
                                         product_id: product_id,
                                         description: description,
+                                        address: address,
                                         user_id: user_id,
                                         image: image_url_1,
                                         document_image: image_url_2,
@@ -47,6 +48,7 @@ router.post('/', (req, res) => {
                             title: title,
                             product_id: product_id,
                             description: description,
+                            address: address,
                             user_id: user_id,
                             image: image_url_1,
                             document_image: image_url_2,
@@ -67,6 +69,7 @@ router.post('/', (req, res) => {
             title: title,
             product_id: product_id,
             description: description,
+            address: address,
             user_id: user_id,
             image: image_url_1,
             document_image: image_url_2,
