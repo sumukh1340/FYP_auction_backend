@@ -20,7 +20,7 @@ let plots_schema = new mongoose.Schema({
     },
     address: {
         type: String,
-        required: true
+        required: false
     },
     document_image: {
         type: String,
