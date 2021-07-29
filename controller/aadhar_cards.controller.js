@@ -13,6 +13,7 @@ router.post('/', (req, res) => {
     }
     aadhar_cards.findOne({
         aadhar_card_number: req.body.aadhar_card_number,
+        aadhar_card_number_found : false
     }).exec((error, found) => {
         if (error) {
             return MongooseErrorHandle(error);
